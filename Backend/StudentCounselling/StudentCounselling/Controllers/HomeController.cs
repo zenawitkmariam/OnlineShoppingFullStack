@@ -42,7 +42,8 @@ namespace StudentCounselling.Controllers
         [HttpGet, Route("GetProductList/{searchText?}")]
         public IEnumerable<Product> GetProductList(string searchText = "")
         {
-            var productList = this._dataBase.Product.Where(t => t.ProductName.ToLower().Contains(searchText.ToLower())
+            List<Product> productList = new List<Product>();
+            productList = this._dataBase.Product.Where(t => t.ProductName.ToLower().Contains(searchText.ToLower())
             || t.ProductNumber.ToLower().Contains(searchText.ToLower())
             || t.Description.ToLower().Contains(searchText.ToLower()) || searchText == null).ToList();
             return productList;

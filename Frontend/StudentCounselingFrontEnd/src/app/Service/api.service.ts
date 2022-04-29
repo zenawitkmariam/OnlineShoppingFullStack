@@ -25,8 +25,8 @@ export class ApiService {
   readonly productListUrl = this.baseUrl + "/Home/GetProductList";
   readonly postProductUrl = this.baseUrl + "/Home/AddProduct";
 
- GetProductList(searchtext:string) : Observable<any>{
-    return this.http.get<any>(this.productListUrl +'/' + searchtext);
+ GetProductList(searchtext:string) : Observable<Product[]>{
+    return this.http.get<Product[]>(this.productListUrl +'/' + searchtext,httpOptions);
  }
  AddProduct(productModel: Product): Observable<string> {
   return this.http.post<string>(this.postProductUrl, productModel, httpOptions);

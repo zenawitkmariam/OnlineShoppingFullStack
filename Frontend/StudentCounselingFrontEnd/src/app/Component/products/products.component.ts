@@ -16,11 +16,12 @@ export class ProductsComponent implements OnInit {
   constructor(private service:ApiService) { }
 
   ngOnInit(): void {
-    this.GetProductList();
+    this.GetProductList('');
   }
-  public GetProductList(){
+  public GetProductList(event:any){
     this.service.GetProductList(this.searchText).subscribe(result=>{
      this.productList = result;
+     console.log(result);
     });
   }
   public AddProduct(){
